@@ -1,4 +1,4 @@
-import dotenv from 'dotenv';
+import dotenv from "dotenv";
 import { createServer } from "https";
 import { Server } from "socket.io";
 
@@ -42,8 +42,7 @@ io.on("connection", (socket) => {
   });
 });
 
-httpServer.listen(process.env.PORT, () => {
-  console.log(`Server is running on port ${process.env.PORT}`);
+const port = process.env.PORT || 3001;
+httpServer.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });
-
-// httpServer.listen(3001, () => console.log("listening on port 3001"));
