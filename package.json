@@ -1,0 +1,14 @@
+{
+	"name": "serv-ease-websocket-server",
+	"version": "1.0.0",
+	"description": "Your WebSocket server description",
+	"main": "server.mjs",
+	"scripts": {
+	  "start": "node server.mjs"
+	},
+	"dependencies": {
+		"socket.io": "^4.7.2",
+		"socket.io-client": "^4.7.2"
+	}
+  }
+  
