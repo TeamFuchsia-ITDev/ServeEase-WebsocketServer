@@ -1,6 +1,8 @@
+import dotenv from 'dotenv';
 import { createServer } from "https";
 import { Server } from "socket.io";
 
+dotenv.config();
 const httpServer = createServer();
 
 const io = new Server(httpServer, {
