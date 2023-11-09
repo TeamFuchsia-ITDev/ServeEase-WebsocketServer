@@ -32,6 +32,7 @@ io.on("connection", (socket) => {
   });
 
   socket.on("locationMessage", (room, message) => {
+	console.log("MESSAGE", message)
     io.to(room).emit("location", `${socket.username} ${message}`);
   });
 
