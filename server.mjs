@@ -24,6 +24,17 @@ io.on("connection", (socket) => {
     io.to(room).emit("message", `${socket.username}: ${message}`);
   });
 
+   // Share Location
+   socket.on("shareLocation", (room, username) => {
+    socket.join(room);
+    socket.username = username;
+    io.to(room).emit("share", `${socket.username} is sharing location.`);
+  });
+
+  socket.on("locationMessage", (room, message) => {
+    io.to(room).emit("location", `${socket.username} ${message}`);
+  });
+
   // Listen for typing events
   socket.on("typing", (room, username) => {
     socket.to(room).emit("typing", username);
