@@ -28,14 +28,12 @@ io.on("connection", (socket) => {
   socket.on("shareLocation", (room, username) => {
     socket.join(room);
     socket.username = username;
-    socket.broadcast
-      .to(room)
-      .emit("share", `${socket.username} is sharing location.`);
+    io.to(room).emit("share", `${socket.username} is sharing location.`);
   });
 
   // Send Location
   socket.on("sendLocation", (room, message) => {
-    socket.broadcast.to(room).emit("location", `${message.lat} ${message.lng}`);
+    io.to(room).emit("location", `${message.lat} ${message.lng}`);
   });
 
   // Listen for typing events
