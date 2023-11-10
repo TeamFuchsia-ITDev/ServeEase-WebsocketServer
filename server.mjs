@@ -33,7 +33,7 @@ io.on("connection", (socket) => {
 
   socket.on("locationMessage", (room, message) => {
 	console.log("MESSAGE", message)
-    io.to(room).emit("location", `${socket.username} ${message.lat} ${message.lng}`);
+    io.to(room).emit("location", `${socket.username} ${message.role} ${message.lat} ${message.lng}`);
   });
 
   // Listen for typing events
