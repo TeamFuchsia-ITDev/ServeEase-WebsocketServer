@@ -17,7 +17,7 @@ io.on("connection", (socket) => {
   socket.on("join", (room, username) => {
     socket.join(room);
     socket.username = username;
-    io.broadcast.to(room).broadcast.emit("message", `${socket.username} has joined the room.`);
+    io.to(room).emit("message", `${socket.username} has joined the room.`);
   });
 
   socket.on("roomMessage", (room, message) => {
@@ -28,7 +28,7 @@ io.on("connection", (socket) => {
   socket.on("shareLocation", (room, username) => {
     socket.join(room);
     socket.username = username;
-    io.to(room).emit("share", `${socket.username} is sharing location.`);
+    socket.broadcast.to(room).emit("share", `${socket.username} is sharing location.`);
   });
 
   // Send Location
