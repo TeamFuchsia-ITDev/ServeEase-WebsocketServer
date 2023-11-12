@@ -40,7 +40,8 @@ io.on("connection", (socket) => {
   });
 
   // Requester Changed Location
-  socket.on("changeLocation", (room, message) => {
+  socket.on("changeLocation", (room, username) => {
+    socket.username = username;
     io.to(room).emit(
       "share",
       `${socket.username} updated the meeting point. Please refresh your page and re-share location.`
