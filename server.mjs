@@ -35,7 +35,7 @@ io.on("connection", (socket) => {
   socket.on("sendLocation", (room, message) => {
     io.to(room).emit(
       "location",
-      `${socket.username}+${message.lat}+${message.lng}`
+      `${socket.username}+${message.lat}+${message.lng}+${message.email}`
     );
   });
 
