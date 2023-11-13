@@ -17,7 +17,7 @@ io.on("connection", (socket) => {
   socket.on("join", (room, username) => {
     socket.join(room);
     socket.username = username;
-    io.to(room).emit("message", `${socket.username} has joined the room.`);
+    io.to(room).emit("joinroom", `${socket.username} has joined the room.`);
   });
 
   socket.on("roomMessage", (room, message) => {
