@@ -1,3 +1,4 @@
+import { Console } from "console";
 import { createServer } from "http";
 import { Server } from "socket.io";
 const httpServer = createServer();
@@ -50,12 +51,12 @@ io.on("connection", (socket) => {
 
   // Listen for typing events
   socket.on("typing", (room, username) => {
-    socket.to(room).emit("typing", username);
+    io.to(room).emit("typing", username);
   });
 
   // Listen for stop-typing events
   socket.on("stopTyping", (room, username) => {
-    socket.to(room).emit("stopTyping", username);
+    io.to(room).emit("stopTyping", username);
   });
 
   socket.on("disconnect", () => {
