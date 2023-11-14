@@ -59,7 +59,11 @@ io.on("connection", (socket) => {
   });
 
   socket.on("disconnect", () => {
-    io.emit("joinroom", `${socket.username} has left the chat.`);
+    if (socket.username) {
+      io.emit("joinroom", `${socket.username} has left the chat.`);
+    } else {
+      console.log(`User ${socket.id} has left the chat without a username.`);
+    }
   });
 });
 
