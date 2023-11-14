@@ -59,7 +59,7 @@ io.on("connection", (socket) => {
   });
 
   socket.on("disconnect", () => {
-    io.emit("message", `${socket.username} has left the chat.`);
+    io.emit("joinroom", `${socket.username} has left the chat.`);
   });
 });
 
